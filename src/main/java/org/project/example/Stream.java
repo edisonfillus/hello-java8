@@ -3,6 +3,7 @@ package org.project.example;
 import static java.util.Comparator.comparing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -46,6 +47,11 @@ public class Stream {
 		//Using parallel processing. Useful only on big lists (> some millions)
 		userlist.parallelStream().filter(user -> user.getAge() > 35).findAny().ifPresent(u -> System.out.println(u.getName()));
 
+		
+		//Find a element by Id
+		int id = 2;
+		User founded = userlist.stream().filter(i -> i.getId() == id).findFirst().orElse(null);
+		System.out.println("Seek for user with id 2 result: " + founded.getName());
 		
 		
 	}
